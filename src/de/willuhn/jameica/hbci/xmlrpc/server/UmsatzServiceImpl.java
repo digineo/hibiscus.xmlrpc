@@ -258,7 +258,7 @@ public class UmsatzServiceImpl extends AbstractServiceImpl implements UmsatzServ
       map.put(KEY_BETRAG,            HBCI.DECIMALFORMAT.format(u.getBetrag()));
       map.put(KEY_VALUTA,            DateUtil.format(u.getValuta()));
       map.put(KEY_DATUM,             DateUtil.format(u.getDatum()));
-      map.put(KEY_ZWECK,             VerwendungszweckUtil.toString(u," "));
+      map.put(KEY_ZWECK,             VerwendungszweckUtil.toString(u,"\n"));
       map.put(KEY_SALDO,             StringUtil.notNull(u.getSaldo()));
       map.put(KEY_PRIMANOTA,         StringUtil.notNull(u.getPrimanota()));
       map.put(KEY_CUSTOMER_REF,      StringUtil.notNull(u.getCustomerRef()));

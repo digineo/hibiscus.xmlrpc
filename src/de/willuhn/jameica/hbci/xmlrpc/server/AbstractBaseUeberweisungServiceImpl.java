@@ -220,15 +220,15 @@ public abstract class AbstractBaseUeberweisungServiceImpl<T extends BaseUeberwei
   /**
    * @see de.willuhn.jameica.hbci.xmlrpc.rmi.BaseUeberweisungService#create(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, double, java.lang.String)
    */
-  public String create(String kontoID, String kto, String blz, String name, String zweck, String zweck2, double betrag, String termin) throws RemoteException
+  public String create(String kontoID, String kto, String blz, String name, String zweck, double betrag, String termin) throws RemoteException
   {
-    return create(kontoID, kto, blz, name, zweck, zweck2, betrag, termin, null);
+    return create(kontoID, kto, blz, name, zweck, betrag, termin, null);
   }
 
   /**
    * @see de.willuhn.jameica.hbci.xmlrpc.rmi.BaseUeberweisungService#create(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, double, java.lang.String, java.lang.String)
    */
-  public String create(String kontoID, String kto, String blz, String name, String zweck, String zweck2, double betrag, String termin, String typ) throws RemoteException
+  public String create(String kontoID, String kto, String blz, String name, String zweck, double betrag, String termin, String typ) throws RemoteException
   {
     Map<String,Object> params = new HashMap<String,Object>();
     params.put(PARAM_KONTO,kontoID);
@@ -237,8 +237,9 @@ public abstract class AbstractBaseUeberweisungServiceImpl<T extends BaseUeberwei
     params.put(PARAM_NAME,name);
     
     List<String> usage = new ArrayList<String>();
-    if (zweck != null && zweck.length() > 0) usage.add(zweck);
-    if (zweck2 != null && zweck2.length() > 0) usage.add(zweck2);
+    for(String line : zweck.split("\n")){
+    	usage.add(line);
+    }
     params.put(PARAM_VERWENDUNGSZWECK,usage);
     
     params.put(PARAM_BETRAG,betrag);

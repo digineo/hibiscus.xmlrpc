@@ -26,6 +26,10 @@ public class DateUtil
 {
   private final static I18N i18n = Application.getPluginLoader().getPlugin(Plugin.class).getResources().getI18N();
 
+  public static SimpleDateFormat isoDate(){
+	  return new SimpleDateFormat("yyyy-MM-dd");
+  }
+  
   /**
    * Versucht, das Objekt als Datum zu parsen.
    * Folgende Objekte werden unterstuetzt:
@@ -54,7 +58,7 @@ public class DateUtil
     {
       // Dateformat ist nicht multithreading-tauglich, daher kein statisches Member
       if (s.indexOf("-") != -1)
-        return new SimpleDateFormat("yyyy-MM-dd").parse(s);
+        return isoDate().parse(s);
       return new SimpleDateFormat("dd.MM.yyyy").parse(s);
     }
     catch (Exception e)
@@ -74,7 +78,7 @@ public class DateUtil
       return "";
     
     // Dateformat ist nicht multithreading-tauglich, daher kein statisches Member
-    return new SimpleDateFormat("yyyy-MM-dd").format(date);
+    return isoDate().format(date);
   }
 
 

@@ -60,7 +60,7 @@ public interface BaseUeberweisungService extends Service
    * @return siehe {@link BaseUeberweisungService#create(Map)}
    * @throws RemoteException
    */
-  public String create(String kontoID, String kto, String blz, String name, String zweck, String zweck2, double betrag, String termin) throws RemoteException;
+  public String create(String kontoID, String kto, String blz, String name, String zweck, double betrag, String termin) throws RemoteException;
 
   /**
    * Legt einen neuen Auftrag an.
@@ -76,7 +76,7 @@ public interface BaseUeberweisungService extends Service
    * @return siehe {@link BaseUeberweisungService#create(Map)}
    * @throws RemoteException
    */
-  public String create(String kontoID, String kto, String blz, String name, String zweck, String zweck2, double betrag, String termin, String type) throws RemoteException;
+  public String create(String kontoID, String kto, String blz, String name, String zweck, double betrag, String termin, String type) throws RemoteException;
 
   /**
    * Erzeugt eine Map mit den Job-Parametern fuer einen Auftrag.
