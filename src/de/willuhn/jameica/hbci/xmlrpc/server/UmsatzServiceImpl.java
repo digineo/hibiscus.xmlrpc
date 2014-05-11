@@ -248,6 +248,10 @@ public class UmsatzServiceImpl extends AbstractServiceImpl implements UmsatzServ
       if (typ != null && !typ.matches(u)) // wenn eine Kategorie angegeben ist, muss sie passen
         continue;
 
+      // Vorgemerkte Umsaetze auslassen
+      if (u.hasFlag(Umsatz.FLAG_NOTBOOKED))
+        continue;
+
       Map<String, Object> map = new HashMap<String, Object>();
       map.put(KEY_ID,                u.getID());
       map.put(KEY_KONTO_ID,          u.getKonto().getID());
