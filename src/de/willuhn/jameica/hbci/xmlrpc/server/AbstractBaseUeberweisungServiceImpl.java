@@ -34,7 +34,6 @@ import de.willuhn.jameica.hbci.rmi.Konto;
 import de.willuhn.jameica.hbci.rmi.SepaLastschrift;
 import de.willuhn.jameica.hbci.server.VerwendungszweckUtil;
 import de.willuhn.jameica.hbci.xmlrpc.rmi.BaseUeberweisungService;
-import de.willuhn.jameica.hbci.xmlrpc.util.DecimalUtil;
 import de.willuhn.jameica.hbci.xmlrpc.util.StringUtil;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.util.DateUtil;
@@ -270,7 +269,7 @@ public abstract class AbstractBaseUeberweisungServiceImpl<T extends BaseUeberwei
       
       ////////////////////////////////////////////////////////////////////////
       // Betrag
-      double betrag = DecimalUtil.parse(auftrag.get(PARAM_BETRAG));
+      double betrag = (Double)auftrag.get(PARAM_BETRAG);
 
       // Wird sonst nur in der GUI geprueft. Da ich es nicht direkt in
       // den Hibiscus-Fachobjekten einbauen will (dort koennte es Fehler
